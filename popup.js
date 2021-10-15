@@ -3,6 +3,8 @@ const stopButton = document.getElementsByClassName('deactivation-button')[0];
 const languageSelect = document.getElementsByClassName('language-select')[0];
 const errorMessage = document.getElementsByClassName('error-message')[0];
 
+navigator.mediaDevices.getUserMedia({audio: true})
+
 languageSelect.addEventListener('change', function (event) {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     chrome.tabs.sendMessage(tabs[0].id, {data: event.target.value}, function(response) {});
